@@ -106,3 +106,30 @@ document.getElementById("refresh").addEventListener(
   },
   true
 );
+function loadData() {
+  let listmhs = [];
+  if (localStorage.getItem("mhs")) {
+    listmhs = JSON.parse(localStorage.getItem("mhs"));
+  }
+  let data = "";
+  for (const [idx, dt] of listmhs.entries()) {
+    data +=
+      "<tr class='fade-in-out'>" +
+      "<th scope='row'>" +
+      (idx + 1) +
+      "</th>" +
+      "<td>" +
+      dt.npm +
+      "</td>" +
+      "<td>" +
+      dt.nama +
+      "</td>" +
+      "<td>" +
+      dt.hobi +
+      "</td>" +
+      "</tr>";
+  }
+  document.getElementById("data").innerHTML = data;
+}
+
+window.onload = loadData;
